@@ -22,7 +22,7 @@ from blog.views import blogposts
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', blogposts),
     url(r'^accounts/', include(accounts_urls)),
+    url(r'^$', blogposts, name='index'),
     url(r'^blog/', include(blog_urls)),
 ]

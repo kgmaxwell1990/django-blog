@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from django.contrib import messages, auth
 from .forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
+from blog.views import blogposts
 
 # Create your views here.
 def get_index(request):
@@ -11,7 +12,7 @@ def get_index(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
-    return redirect(get_index)
+    return redirect(blogposts)
     
 def login(request):
     if request.method=="POST":
@@ -49,7 +50,7 @@ def register(request):
                                      
             if user is not None:
                 auth.login(request, user)
-                return redirect(get_index)
+                return redirect(blogposts)
     else:
         form = UserRegistrationForm()
     
