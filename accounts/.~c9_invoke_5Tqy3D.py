@@ -11,7 +11,10 @@ def get_index(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
-    return redirect('home')
+    ret
+    
+    
+    return redirect(reverse('posts'))
     
 def login(request):
     if request.method=="POST":
@@ -49,7 +52,7 @@ def register(request):
                                      
             if user is not None:
                 auth.login(request, user)
-                return redirect('home')
+                return redirect(blogposts)
     else:
         form = UserRegistrationForm()
     
