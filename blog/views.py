@@ -19,6 +19,7 @@ def viewpost(request, slug):
     return render(request, "viewpost.html", {'post': this_post, 'comments': comments, 'form': form})
 
 
+
 @login_required()
 def newpost(request):
     if request.method == "POST":
@@ -32,7 +33,7 @@ def newpost(request):
             return redirect(viewpost, post.slug)
     else:
         form = BlogPostForm()
-    return render(request, 'postform.html', {'form': form})
+    return render(request, 'addpostform.html', {'form': form})
     
     
 def editpost(request, slug):
@@ -50,7 +51,7 @@ def editpost(request, slug):
            return redirect(viewpost, post.slug)
    else:
        form = BlogPostForm(instance=post)
-   return render(request, 'postform.html', {'form': form, 'post': post})
+   return render(request, 'editpostform.html', {'form': form, 'post': post})
    
 def deletepost(request, slug):
      post = get_object_or_404(Post, slug=slug)
@@ -68,7 +69,7 @@ def addcomment(request, post_slug):
         comment.post = post
 
         comment.save()        
-        return redirect('viewpost', post_id)
+        return redirect('viewpost', post_slug)
     
     
     

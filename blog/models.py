@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.template.defaultfilters import slugify
 
 class Post(models.Model):
     slug = models.SlugField(max_length=50)

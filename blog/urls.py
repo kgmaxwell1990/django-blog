@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^posts/(.+)/edit$', editpost, name="editpost"),
     url(r'^posts/(.+)/delete$', deletepost, name="deletepost"),
     url(r'^posts/(.+)/comments/add$', addcomment, name="addcomment"),
-    url(r'^posts/(.+)$', viewpost, name="viewpost"),
+    url(r'^posts/(?P<slug>.+)$', viewpost, name="viewpost"),
     ]
